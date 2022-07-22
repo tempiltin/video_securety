@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://vjs.zencdn.net/7.20.1/video-js.css" rel="stylesheet" />
+    <style>
+        .video-js {
+            width: 50% !important;
+            margin: auto;
+            min-height: 100%;
+        }
+
+        .vjs-big-play-button {
+            position: absolute;
+            top: 45% !important;
+            left: 30% !important;
+
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <video id="programmer" class="video-js" controls preload="auto" width="640" height="264"
+        poster="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+        data-setup="{}">
+        <source id="source11" src="./1.mp4" type="video/mp4" />
+
+    </video>
+
+    <button id="playMe">Play video</button>
+
+    <h1>.</h1>
+    <script src="https://vjs.zencdn.net/7.20.1/video.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./script.js"></script>
+    <script>
+        $(document).ready(function () {
+            let data = {
+                url: "./2.mp4",
+
+            }
+
+            var videoObj = videojs("programmer");
+
+            function onPlayfunc() {
+
+                if (!isPlaying) {
+                    $('#source11').remove()
+                    // $('#programmer_html5_api').attr("src",data.url)
+                    $('#programmer_html5_api').attr("src", data.url)
+                    videoObj.play()
+                } else {
+                    isPlaying = !isPlaying;
+
+                }
+                // $.ajax({
+                //     type: 'GET',
+
+                //     url: "https://api.pexels.com/videos/popular",
+                //     dataType: 'json',
+                //     crossDomain: true,
+                //     succes: function (object) {
+                //         $("h1").html(JSON.stringify());
+                //     },
+                //     error: function (object) {
+                //         $("h1").html(JSON.stringify(object));
+                //     }
+                // })
+
+            }
+
+            var myPlayer = $('')
+            var isPlaying = false;
+            $('#playMe').on('click', function () {
+                //  $('#programmer_html5_api').load()
+                // $('#programmer_html5_api').play()
+            })
+
+
+            $('.vjs-big-play-button').on('click', function () {
+                // console.log();
+                // $('video-js').addClass('vjs-playing')
+                //    $('video-js').addClass('vjs-user-active')
+
+                onPlayfunc()
+
+
+            })
+            $('.vjs-poster').on('click', function () {
+                onPlayfunc()
+            })
+
+        });
+    </script>
+</body>
+
+</html>
